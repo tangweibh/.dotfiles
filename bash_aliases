@@ -7,5 +7,5 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias rm='rm -I --preserve-root'# confirmation if delete more than 3 files
-
+# confirmation if delete more than 3 files
+alias rm='rm -I --preserve-root' 
