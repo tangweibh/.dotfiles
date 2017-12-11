@@ -34,7 +34,7 @@ set ofu=syntaxcomplete#Complete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 03. Theme/Colors                                                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256              " enable 256-color mode.
+" set t_Co=256              " enable 256-color mode.
 syntax enable             " enable syntax highlighting (previously syntax on).
 "colorscheme molokai       " set colorscheme
 
@@ -59,6 +59,7 @@ augroup END
 set number                " show line numbers
 " set numberwidth=6         " make the number gutter 6 characters wide
 set cul                   " highlight current line
+" hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 " set laststatus=2          " last window always has a statusline
 set hlsearch            " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
