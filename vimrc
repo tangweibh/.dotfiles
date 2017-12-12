@@ -89,6 +89,7 @@ set encoding=utf-8
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. Custom Commands                                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" Map jj to <Esc> in insert mode
+inoremap jj <Esc>
 " Prettify JSON files making them easier to read
 " command PrettyJSON %!python -m json.tool
