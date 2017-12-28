@@ -67,6 +67,7 @@ set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set showmatch
 " set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
+set laststatus=2
 set visualbell
 " set mouse=a
 " search into subdirectories
@@ -89,7 +90,34 @@ set encoding=utf-8
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. Custom Commands                                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map <Leader> to <Space>
+let mapleader = ' '
 " Map jj to <Esc> in insert mode
 inoremap jj <Esc>
 " Prettify JSON files making them easier to read
 " command PrettyJSON %!python -m json.tool
+" Setting for netrw -- the default vim file explorer
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
+" Uncomment the following 4 lines to have netrw when launching VIM
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
+" Enable unsaved buffer
+set hidden
+" Simplify buffer switch
+set wildcharm=<C-Z>
+nnoremap <Leader>k :b <C-Z>
+nnoremap <Leader>l :buffers<CR>:buffer<Space>
+nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>p :bp<CR>
+nnoremap <Leader>j :b#<CR>
+" Speed up scroll up and down
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+" Fast disable highlight
+nnoremap <Leader>h :nohl<CR>
