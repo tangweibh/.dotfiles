@@ -56,7 +56,14 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 04. Vim UI                                                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set number                " show line numbers
+" set number                " show line numbers
+" Hybrid line numbers
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,InsertLeave,WinEnter * set relativenumber
+  autocmd BufLeave,InsertEnter,WinLeave   * set norelativenumber
+augroup END
 " set numberwidth=6         " make the number gutter 6 characters wide
 set cul                   " highlight current line
 " hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
@@ -119,5 +126,11 @@ nnoremap <Leader>j :b#<CR>
 " Speed up scroll up and down
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
-" Fast disable highlight
-nnoremap <Leader>h :nohl<CR>
+" Fast highlight and disable highlight
+" nnoremap <Leader>f :let @/=expand('<cword>')<CR> :set hls<CR>
+nnoremap <Leader>f :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+nnoremap <Leader>d :nohl<CR>
+" Fold
+set foldmethod=indent
+" Open all folders when editing a new buffer
+set foldlevelstart=99
