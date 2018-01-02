@@ -134,3 +134,11 @@ nnoremap <Leader>d :nohl<CR>
 set foldmethod=indent
 " Open all folders when editing a new buffer
 set foldlevelstart=99
+" Show command in the bottom-right corner
+set showcmd
+" Auto pair ( [ { " ' 
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {}<Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
