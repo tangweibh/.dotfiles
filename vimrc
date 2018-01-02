@@ -123,6 +123,8 @@ nnoremap <Leader>l :buffers<CR>:buffer<Space>
 nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>p :bp<CR>
 nnoremap <Leader>j :b#<CR>
+" Map ' to `
+map ' `
 " Speed up scroll up and down
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
