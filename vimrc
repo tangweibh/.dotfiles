@@ -27,6 +27,8 @@ filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 autocmd FileType make setlocal noexpandtab
 " In Python files, use 4 spaces instead of 2 for tabs
 autocmd FileType python setlocal sw=4 ts=4 sts=4
+" In Latex files, use <F5> to run the compile.sh script 
+autocmd FileType tex nnoremap <F5> :w <bar> !./compile.sh <CR>
 
 " Enable omnicompletion (to use, hold Ctrl+X then Ctrl+O while in Insert mode.
 set ofu=syntaxcomplete#Complete
@@ -71,6 +73,7 @@ set cul                   " highlight current line
 set hlsearch            " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
+set smartcase             " Turn off ignorecase when seach with capital letters. 
 set ruler                 " Always show info along bottom.
 set showmatch
 " set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
@@ -84,6 +87,7 @@ set wildmenu
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 05. Text Formatting/Layout                                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set textwidth=80
 set autoindent            " auto-indent
 set tabstop=2             " tab spacing
 set softtabstop=2         " unify
