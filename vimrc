@@ -25,40 +25,13 @@ filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 
 " In Makefiles DO NOT use spaces instead of tabs
 autocmd FileType make setlocal noexpandtab
-" In Python files, use 4 spaces instead of 2 for tabs
-autocmd FileType python setlocal sw=4 ts=4 sts=4
 " In Latex files, use <F5> to run the compile.sh script 
 autocmd FileType tex nnoremap <F5> :w <bar> !./compile.sh <CR>
+" In Latex files, auto pair $$
+autocmd FileType tex inoremap $ $$<Esc>i
+" In Latex files, set spell on 
+autocmd FileType tex setlocal spell spelllang=en_us spellfile=en.utf-8.add
 
-" Enable omnicompletion (to use, hold Ctrl+X then Ctrl+O while in Insert mode.
-set ofu=syntaxcomplete#Complete
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 03. Theme/Colors                                                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set t_Co=256              " enable 256-color mode.
-syntax enable             " enable syntax highlighting (previously syntax on).
-"colorscheme molokai       " set colorscheme
-
-" Prettify Markdown files
-augroup markdown
-  au!
-  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-augroup END
-
-" Highlight characters that go over 80 columns (by drawing a border on the 81st)
-" if exists('+colorcolumn')
-"   set colorcolumn=81
-"   highlight ColorColumn ctermbg=red
-" else
-"   highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"   match OverLength /\%81v.\+/
-" endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 04. Vim UI                                                                 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set number                " show line numbers
 " Hybrid line numbers
 set number relativenumber
 augroup numbertoggle
@@ -66,19 +39,35 @@ augroup numbertoggle
   autocmd BufEnter,InsertLeave,WinEnter * set relativenumber
   autocmd BufLeave,InsertEnter,WinLeave   * set norelativenumber
 augroup END
-" set numberwidth=6         " make the number gutter 6 characters wide
+
+" In some files, set textwidth to 80 
+autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp,*.py,*.tex setlocal tw=80
+" In Python and Matlab files, use 4 spaces instead of 2 for tabs
+autocmd BufNewFile,BufRead *.py,*.m setlocal sw=4 ts=4 sts=4
+
+" Enable omnicompletion (to use, hold Ctrl+X then Ctrl+O while in Insert mode.
+set ofu=syntaxcomplete#Complete
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 03. Theme/Colors                                                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable             " enable syntax highlighting (previously syntax on).
+colorscheme default       " set colorscheme
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 04. Vim UI                                                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cul                   " highlight current line
-" hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
-" set laststatus=2          " last window always has a statusline
+set laststatus=2
 set hlsearch            " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
 set smartcase             " Turn off ignorecase when seach with capital letters. 
 set ruler                 " Always show info along bottom.
 set showmatch
-" set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
-set laststatus=2
 set visualbell
+" Show command in the bottom-right corner
+set showcmd
 " set mouse=a
 " search into subdirectories
 set path+=**
@@ -87,7 +76,6 @@ set wildmenu
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 05. Text Formatting/Layout                                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set textwidth=80
 set autoindent            " auto-indent
 set tabstop=2             " tab spacing
 set softtabstop=2         " unify
@@ -96,8 +84,11 @@ set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
 set smartindent           " automatically insert one extra level of indentation
 set smarttab              " use tabs at the start of a line, spaces elsewhere
-" set nowrap                " don't wrap text
 set encoding=utf-8
+" Fold
+set foldmethod=indent
+" Open all folders when editing a new buffer
+set foldlevelstart=99
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 06. Custom Commands                                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,20 +96,13 @@ set encoding=utf-8
 let mapleader = ' '
 " Map jj to <Esc> in insert mode
 inoremap jj <Esc>
-" Prettify JSON files making them easier to read
-" command PrettyJSON %!python -m json.tool
+
 " Setting for netrw -- the default vim file explorer
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15
-" Uncomment the following 4 lines to have netrw when launching VIM
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd VimEnter * :Vexplore
-" augroup END
-" Enable unsaved buffer
 set hidden
 " Simplify buffer switch
 set wildcharm=<C-Z>
@@ -133,15 +117,8 @@ map ' `
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 " Fast highlight and disable highlight
-" nnoremap <Leader>f :let @/=expand('<cword>')<CR> :set hls<CR>
 nnoremap <Leader>f :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nnoremap <Leader>d :nohl<CR>
-" Fold
-set foldmethod=indent
-" Open all folders when editing a new buffer
-set foldlevelstart=99
-" Show command in the bottom-right corner
-set showcmd
 " Auto pair ( [ { " ' 
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
