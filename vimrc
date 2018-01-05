@@ -51,8 +51,11 @@ set ofu=syntaxcomplete#Complete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 03. Theme/Colors                                                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
 syntax enable             " enable syntax highlighting (previously syntax on).
 colorscheme default       " set colorscheme
+set bg=dark
+hi CursorLine cterm=NONE ctermbg=234 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 04. Vim UI                                                                 "
