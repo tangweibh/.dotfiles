@@ -34,11 +34,12 @@ autocmd FileType tex setlocal spell spelllang=en_us spellfile=en.utf-8.add
 
 " Hybrid line numbers
 set number relativenumber
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,InsertLeave,WinEnter * set relativenumber
-  autocmd BufLeave,InsertEnter,WinLeave   * set norelativenumber
-augroup END
+" Set or unset relativenumber based on some events. 
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,InsertLeave,WinEnter * set relativenumber
+"   autocmd BufLeave,InsertEnter,WinLeave   * set norelativenumber
+" augroup END
 
 " In some files, set textwidth to 80 
 autocmd BufNewFile,BufRead *.c,*.cpp,*.h,*.hpp,*.py,*.tex setlocal tw=80
