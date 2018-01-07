@@ -129,3 +129,5 @@ inoremap [ []<Esc>i
 inoremap { {}<Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
+" Jump to tag in the alternative window
+nnoremap <Leader>t "tyiw <C-w>w :tag <C-r>t <CR>
