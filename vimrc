@@ -31,6 +31,7 @@ autocmd FileType tex nnoremap <F5> :w <bar> !./compile.sh <CR>
 autocmd FileType tex inoremap $ $$<Esc>i
 " In Latex files, set spell on 
 autocmd FileType tex setlocal spell spelllang=en_us spellfile=en.utf-8.add
+let g:tex_comment_nospell=1
 
 " Hybrid line numbers
 set number relativenumber
