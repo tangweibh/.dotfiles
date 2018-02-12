@@ -25,8 +25,8 @@ filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 
 " In Makefiles DO NOT use spaces instead of tabs
 autocmd FileType make setlocal noexpandtab
-" In Latex files, use <F5> to run the compile.sh script 
-autocmd FileType tex nnoremap <F5> :w <bar> !./compile.sh <CR>
+" In Latex files, use <F5> to make 
+autocmd FileType tex nnoremap <F5> :w <bar> !make <CR>
 " In Latex files, auto pair $$
 autocmd FileType tex inoremap $ $$<Esc>i
 " In Latex files, set spell on 
