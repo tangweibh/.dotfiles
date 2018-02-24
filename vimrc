@@ -27,6 +27,8 @@ filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 autocmd FileType make setlocal noexpandtab
 " In Latex files, use <F5> to make 
 autocmd FileType tex nnoremap <F5> :w <bar> !make <CR>
+autocmd FileType tex nnoremap <F6> :w <bar> !make latex <CR>
+autocmd FileType tex nnoremap <F7> :w <bar> !make bibtex <CR>
 " In Latex files, auto pair $$
 autocmd FileType tex inoremap $ $$<Esc>i
 " In Latex files, set spell on 
