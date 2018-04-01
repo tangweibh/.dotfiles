@@ -79,6 +79,7 @@ set showcmd
 " search into subdirectories
 set path+=**
 " display all matching files when we tab complete
+set wildmode=longest,list,full
 set wildmenu
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 05. Text Formatting/Layout                                                 "
@@ -89,7 +90,7 @@ set softtabstop=2         " unify
 set shiftwidth=2          " indent/outdent by 2 columns
 set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
-set smartindent           " automatically insert one extra level of indentation
+" set smartindent           " automatically insert one extra level of indentation
 set smarttab              " use tabs at the start of a line, spaces elsewhere
 set encoding=utf-8
 " Fold
