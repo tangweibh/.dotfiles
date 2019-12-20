@@ -33,13 +33,3 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
-
-# set the trash script
-if [ ! -d $bin_dir ]
-then
-  mkdir $bin_dir
-fi
-echo "Creating symlink to trash.sh in $bin_dir."
-ln -s $dir/trash.sh $bin_dir/trash
-ln -s $dir/trash.sh $bin_dir/ts
-echo "Please add $bin_dir to your PATH!"
